@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">KotlinTemplate</string>
+
+    <string name="username">Username</string>
+    <string name="go">Go</string>
+    <string name="search_user">Search user</string>
+    <string name="most_searched">Most searched</string>
+
+    <!-- Profile -->
+    <string name="profile_title">Profile</string>
+
+    <!-- Repos -->
+    <string name="repos_title">Repositories</string>
+
+</resources>

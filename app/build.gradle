@@ -1,0 +1,90 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId rootProject.ext.applicationId
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+    kapt project.libraries.databinding
+
+    // Kotlin
+    implementation project.libraries.kotlin_std_lib
+
+    // Core
+    implementation project.libraries.constraint_layout
+    implementation project.libraries.appcompat
+    implementation project.libraries.cardview
+    implementation project.libraries.recyclerview
+    implementation project.libraries.design
+    implementation project.libraries.annotations
+
+    // Lifecycle
+    kapt project.libraries.lifecycle_compiler
+    implementation project.libraries.lifecycle_extensions
+
+    // Rx
+    implementation project.libraries.rx
+    implementation project.libraries.rxandroid
+
+    // Network
+    implementation project.libraries.retrofit
+    implementation project.libraries.gson_converter
+    implementation project.libraries.rx_adapter
+    implementation project.libraries.logging_interceptor
+
+    // Dagger
+    kapt project.libraries.dagger_compiler
+    kapt project.libraries.dagger_android_compiler
+    implementation project.libraries.dagger
+    implementation project.libraries.dagger_android
+    implementation project.libraries.dagger_android_support
+
+    // Logging & Crash reporting
+    implementation project.libraries.timber
+    implementation project.libraries.crashlytics
+
+    // Tests
+    testImplementation project.libraries.junit
+    testImplementation project.libraries.mockito
+    testImplementation project.libraries.mockito_kotlin
+    testImplementation project.libraries.assertj
+}

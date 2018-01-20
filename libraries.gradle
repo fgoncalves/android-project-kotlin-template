@@ -1,0 +1,53 @@
+class Libraries extends Expando {
+    def call(Closure cl) {
+        cl.delegate = this
+        cl.call()
+    }
+}
+
+def libraries = project.ext.libraries = new Libraries()
+
+// For projects
+libraries {
+    databinding = "com.android.databinding:compiler:$android_plugin_version"
+    kotlin_std_lib = "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion"
+
+    def supportRepositoryVersion = '27.0.2'
+    constraint_layout = 'com.android.support.constraint:constraint-layout:1.0.2'
+    appcompat = "com.android.support:appcompat-v7:$supportRepositoryVersion"
+    cardview = "com.android.support:cardview-v7:$supportRepositoryVersion"
+    recyclerview = "com.android.support:recyclerview-v7:$supportRepositoryVersion"
+    design = "com.android.support:design:$supportRepositoryVersion"
+    annotations = "com.android.support:support-annotations:$supportRepositoryVersion"
+
+    def daggerVersion = '2.13'
+    dagger = "com.google.dagger:dagger:$daggerVersion"
+    dagger_compiler = "com.google.dagger:dagger-compiler:$daggerVersion"
+    dagger_android_compiler = "com.google.dagger:dagger-android-processor:$daggerVersion"
+    dagger_android = "com.google.dagger:dagger-android:$daggerVersion"
+    dagger_android_support = "com.google.dagger:dagger-android-support:$daggerVersion"
+
+    crashlytics = 'com.crashlytics.sdk.android:crashlytics:2.8.0@aar'
+
+    def retrofitVersion = '2.3.0'
+    retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    gson_converter = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    rx_adapter = "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    logging_interceptor = 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+
+    def rxVersion = '2.1.7'
+    rx = "io.reactivex.rxjava2:rxjava:$rxVersion"
+    rxandroid = 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+    def lifecycleVersion = '1.0.0'
+    lifecycle_compiler = "android.arch.lifecycle:compiler:$lifecycleVersion"
+    lifecycle_extensions = "android.arch.lifecycle:extensions:$lifecycleVersion"
+
+    timber = 'com.jakewharton.timber:timber:4.6.0'
+
+    // For testing
+    junit = 'junit:junit:4.12'
+    mockito = 'org.mockito:mockito-core:2.9.0'
+    mockito_kotlin = 'com.nhaarman:mockito-kotlin:1.5.0'
+    assertj = 'com.squareup.assertj:assertj-android:1.2.0'
+}

@@ -1,0 +1,37 @@
+apply from: 'libraries.gradle'
+
+buildscript {
+    ext.kotlinVersion = '1.2.10'
+    ext.android_plugin_version = '3.0.1'
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$android_plugin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    minSdkVersion = 20
+    targetSdkVersion = 26
+    compileSdkVersion = 26
+    buildToolsVersion = '27.0.2'
+    versionCode = 1
+    versionName = "0.0.1"
+    applicationId = "com.github.fgoncalves.template"
+}

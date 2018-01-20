@@ -82,9 +82,13 @@ dependencies {
     implementation project.libraries.timber
     implementation project.libraries.crashlytics
 
+    // Utils
+    implementation project.libraries.path_manager
+
     // Tests
     testImplementation project.libraries.junit
     testImplementation project.libraries.mockito
     testImplementation project.libraries.mockito_kotlin
     testImplementation project.libraries.assertj
+    testImplementation project.libraries.test_rules
 }

@@ -13,13 +13,13 @@ import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
 abstract class BaseFragment<VIEWMODEL : BaseViewModel, in VIEW : ViewDataBinding> :
-        DaggerFragment(), LayoutProvider, LifecycleOwner {
+        DaggerFragment(), LifecycleOwner {
     private lateinit var lifecycleRegistry: LifecycleRegistry
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
         protected set
 
-    private lateinit var viewModel: VIEWMODEL
+    protected lateinit var viewModel: VIEWMODEL
 
     protected abstract val viewModelClass: Class<VIEWMODEL>
 

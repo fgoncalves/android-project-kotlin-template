@@ -25,6 +25,10 @@ class MainActivity : DaggerAppCompatActivity() {
         screenNavigator.single(HomeScreen.newInstance())
     }
 
+    override fun onBackPressed() {
+        if (!screenNavigator.back()) finish()
+    }
+
     private fun setupDrawer() {
         drawer?.run {
             setNavigationItemSelectedListener {

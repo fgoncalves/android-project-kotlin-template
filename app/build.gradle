@@ -80,7 +80,10 @@ dependencies {
 
     // Logging & Crash reporting
     implementation project.libraries.timber
-    implementation project.libraries.crashlytics
+    implementation(project.libraries.crashlytics) {
+        transitive = true
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
 
     // Utils
     implementation project.libraries.path_manager

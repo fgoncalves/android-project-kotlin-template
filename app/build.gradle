@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -80,7 +81,9 @@ dependencies {
 
     // Logging & Crash reporting
     implementation project.libraries.timber
-    implementation project.libraries.crashlytics
+    implementation(project.libraries.crashlytics) {
+        transitive = true
+    }
 
     // Utils
     implementation project.libraries.path_manager
